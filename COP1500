@@ -1,4 +1,3 @@
-
 class Expense:
     def __init__(expense, item, cost):
         expense.item = item
@@ -77,5 +76,6 @@ while i < len(budget_list):
 
 print("Budget remaining: $", round(budget, 2), sep='')
 print("-" * 34)
+
 
 
