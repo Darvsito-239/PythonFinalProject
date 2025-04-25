@@ -4,7 +4,6 @@ class Expense:
         expense.cost = cost
 #Lists        
 budget_list = []
-budget_list_cost = []
 
 #Start
 print("-" * 34)
@@ -26,11 +25,11 @@ while True:
                 budget -= cost
                 expense = Expense(item, cost)
                 budget_list.append(expense)
-                budget_list_cost.append(cost)
                 print(item, "added to expenses.")
                 print("\nBudget remaining: $", round(budget, 2), sep='')
             else:
                 print("\nNot enough funds for:", item)
+                print("\nBudget remaining: $", round(budget, 2), sep='')
                 continue
 
         #Removing an Item and Cost   
@@ -39,14 +38,14 @@ while True:
             print("\nItems in list: ")
             while i < len(budget_list):
                 print(i+1, budget_list[i].item, sep = ". ", end = " ")
-                print("-->","$", round(budget_list_cost[i], 2))
+                print("-->","$", round(budget_list[i].cost, 2))
                 i+=1
-            x = int(input("\nWhich item #: ")) -1
+            x = int(input("\nRemove which item? #: ")) - 1
             budget += budget_list[x].cost
+            removed_item = budget_list[x].item
             del budget_list[x]
-            del budget_list_cost[x]
             print("-" * 34)
-            print(item, "removed from expenses.")
+            print(removed_item, "removed from expenses.")
             print("Budget remaining: $", round(budget, 2), sep='')
                 
         #Show List   
@@ -55,7 +54,7 @@ while True:
             print("\nItems in list: ")
             while i < len(budget_list):
                 print(i+1, budget_list[i].item, sep = ". ", end = " ")
-                print("-->","$", round(budget_list_cost[i], 2))
+                print("-->","$", round(budget_list[i].cost, 2))
                 i+=1
             print("Budget remaining: $", round(budget, 2), sep='')
 
@@ -71,11 +70,10 @@ while True:
 i = 0
 while i < len(budget_list):
     print(i+1, budget_list[i].item, sep = ". ", end = " ")
-    print("-->","$", round(budget_list_cost[i], 2))
+    print("-->","$", round(budget_list[i].cost, 2))
     i+=1
 
 print("Budget remaining: $", round(budget, 2), sep='')
 print("-" * 34)
-
 
 
